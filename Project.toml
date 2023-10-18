@@ -1,0 +1,25 @@
+name = "FeatureSets"
+uuid = "fb452ac3-2a14-4977-9b8b-87165f275d43"
+authors = ["Cursor Insight <info@cursorinsight.com>"]
+version = "0.24.0"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HDF5 = "f67ccb44-e63f-5c2f-98bd-6dc0ccc4ba2f"
+MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+PackageExtensionCompat = "65ce6f38-6b18-4e1d-a461-8949797d7930"
+UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
+
+[weakdeps]
+DecisionTree = "7806a523-6efd-50cb-b5f6-3fa6f1930dbb"
+
+[extensions]
+DecisionTreeExt = "DecisionTree"
+
+[compat]
+Dates = "1.6"
+HDF5 = "0.15 - 1"
+MacroTools = "0.5"
+PackageExtensionCompat = "1"
+UUIDs = "1.6"
+julia = "1.6.7"
