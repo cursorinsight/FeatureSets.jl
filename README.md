@@ -1,9 +1,8 @@
 # FeatureSets.jl
 
 [![CI](https://github.com/cursorinsight/FeatureSets.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/cursorinsight/FeatureSets.jl/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/cursorinsight/FeatureSets.jl/branch/main/graph/badge.svg?token=P59CK9SA1Z)](https://codecov.io/gh/cursorinsight/FeatureSets.jl)
 [![Aqua QA](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
-
-<!--[![codecov](https://codecov.io/gh/cursorinsight/FeatureSets.jl/branch/main/graph/badge.svg?token=P59CK9SA1Z)](https://codecov.io/gh/cursorinsight/FeatureSets.jl)-->
 
 FeatureSets.jl is a Julia package designed around structures storing large
 feature sets for classification and regression problems. It's designed to work
