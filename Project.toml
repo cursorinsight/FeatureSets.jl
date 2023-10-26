@@ -1,7 +1,7 @@
 name = "FeatureSets"
 uuid = "fb452ac3-2a14-4977-9b8b-87165f275d43"
 authors = ["Cursor Insight <info@cursorinsight.com>"]
-version = "0.24.0"
+version = "0.24.1"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -24,4 +24,4 @@ HDF5 = "0.15 - 1"
 MacroTools = "0.5"
 PackageExtensionCompat = "1"
 UUIDs = "1.6"
-julia = "1.6.7"
+julia = "1.6"
