@@ -17,6 +17,7 @@ using Base: ReshapedArray
 using DecisionTree: Ensemble as RandomForest
 using DecisionTree: apply_forest, build_forest, confusion_matrix
 using HDF5: File, h5open, ishdf5
+using Tables
 
 # Tested API
 using FeatureSets: FeatureSet
@@ -268,6 +269,38 @@ end
     @test cm.matrix isa Matrix{Int64}
     @test cm.accuracy >= 0.8
     @test cm.kappa >= 0.8
+end
+
+@testset "Tables API" begin
+    fs_names = "feature_" .* ('1':'9')
+    fs = FeatureSet(rand(1:10, 10), fs_names, rand(10, 9))
+    # test that the MatrixTable `istable`
+    @test Tables.istable(typeof(fs))
+    @test Tables.schema(fs) isa Tables.Schema
+    # test that it defines row access
+    @test Tables.rowaccess(typeof(fs))
+    @test applicable(iterate, Tables.rows(fs))
+    # test that it defines column access
+    @test Tables.columnaccess(typeof(fs))
+    @test applicable(iterate, Tables.columns(fs))
+    let cols = Tables.columns(fs), value = fs[:, "feature_1"]
+        @test cols.feature_1 == value
+        # test our `Tables.AbstractColumns` interface methods
+        @test Tables.getcolumn(cols, :feature_1) == value
+        @test Tables.getcolumn(cols, 1) ==  value
+        @test Tables.columnnames(cols) == Symbol.(fs_names)
+    end
+    # test that we can access the first row by index
+    let row = first(Tables.rows(fs)), value = fs[1, "feature_1"]
+        @test eltype(fs) == typeof(first(row))
+        @test row.feature_1 == value
+        # test our `Tables.AbstractRow` interface methods
+        @test Tables.getcolumn(row, :feature_1) == value
+        @test Tables.getcolumn(row, 1) == value
+        @test propertynames(row) == Symbol.(fs_names)
+        @test Tables.columnnames(row) == Symbol.(fs_names)
+    end
+    @test Tables.subset(fs, 3:5) == fs[3:5, :]
 end
 
 end # module FeatureSetsTest

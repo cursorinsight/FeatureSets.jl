@@ -80,7 +80,7 @@ import Base: ==, getindex, hash, parent, show, view
 import Base: axes, length, ndims, size
 
 ## Iterable API
-import Base: eachcol, eachrow, iterate
+import Base: eachcol, eachrow, eltype, iterate
 
 ### File API
 using HDF5: File as HDF5File
@@ -205,6 +205,8 @@ end
 function eachcol(feature_set::AbstractFeatureSet)
     return zip(names(feature_set), eachcol(features(feature_set)))
 end
+
+eltype(::AbstractFeatureSet{L, N, F}) where {L, N, F} = F
 
 ###=============================================================================
 ### FeatureSet
